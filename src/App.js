@@ -1,32 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { setFilter } from './redux/actions';
+import { changeMessage } from './redux/actions';
 
-const App = ({ activeFilter, setFilter }) => {
+const App = ({ statusMessage, changeMessage }) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{activeFilter}</p>
+      <header>
+        <p>{statusMessage}</p>
         <button
+          className="button"
           onClick={() => {
-            setFilter('hello dere');
-          }}
-          style={{
-            backgroundColor: 'white',
-            border: 0,
-            color: 'black',
-            padding: 20,
-            borderRadius: 20,
-            cursor: 'pointer'
-          }}
-          hoverStyle={{
-            color: 'red'
+            changeMessage('new message');
           }}
         >
-          Learn React
+          Change Message
         </button>
       </header>
     </div>
@@ -34,10 +22,10 @@ const App = ({ activeFilter, setFilter }) => {
 };
 
 const mapStateToProps = state => {
-  return { activeFilter: state };
+  return { statusMessage: state };
 };
 
 export default connect(
   mapStateToProps,
-  { setFilter }
+  { changeMessage }
 )(App);

@@ -1,3 +1,4 @@
-import { SET_FILTER } from './actionTypes';
-
-export const setFilter = payload => ({ type: SET_FILTER, payload: payload });
+export const changeMessage = payload => ({
+  type: 'CHANGE_MESSAGE',
+  payload: payload
+});
